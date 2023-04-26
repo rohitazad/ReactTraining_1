@@ -1,11 +1,8 @@
-import MyCom from './MyCom';
-import RohitReactJs from './Container/HomePage';
-// import AboutPageContiner from './Container/AboutPage';
+import RouterConfig from './Route';
 function App() {
-  const mydata= "my data";
   return (
     <>
-      <RohitReactJs />
+      <RouterConfig />
     </>  
   );
 }
