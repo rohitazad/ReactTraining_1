@@ -5,6 +5,8 @@ import HeaderCOmponents from '../Components/Header';
 import HomePageContiner from '../Container/HomePage';
 import AboutPageContiner from '../Container/AboutPage';
 import AboutIdContainer from '../Container/AboutIdContainer';
+import ContactContainer from '../Container/Contact';
+import PostDetailsContainer from '../Container/PostDetailsContainer';
 
 const RouterConfig = ()=>{
     return (
@@ -16,7 +18,8 @@ const RouterConfig = ()=>{
                     <Route element={<HomePageContiner />} path="/" />
                     <Route element={<AboutPageContiner />} path="/about" />
                     <Route element={<AboutIdContainer />} path="/about/:id" />
-                    <Route element="Hello i m contact page" path="/contact" />
+                    <Route element={<ContactContainer />} path="/contact" />
+                    <Route element={<PostDetailsContainer />} path="/post/:id" />
                 </Routes>
             <FooterCOmponents />
         </BrowserRouter>
