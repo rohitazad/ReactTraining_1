@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import BlogListComponents from '../Components/BlogListItem';
-const ContactContainer = ()=>{
+const ContactContainer = (props)=>{
     const API_URL = 'https://jsonplaceholder.typicode.com/';
     let [count, setCount] = useState(0);
     let [number, setNumber] = useState(0);
@@ -36,7 +36,7 @@ const ContactContainer = ()=>{
 
     return (
         <>
-            Hello i m contact page 
+            Hello i m contact page  {props.data}
             <p>count :- {count}</p>
             <button onClick={countIncrease}>Click to count no.</button>
             <h1>number : {number}</h1>

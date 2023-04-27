@@ -1,28 +1,33 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import FooterCOmponents from '../Components/Footer';
 import HeaderCOmponents from '../Components/Header';
-import HomePageContiner from '../Container/HomePage';
-import AboutPageContiner from '../Container/AboutPage';
-import AboutIdContainer from '../Container/AboutIdContainer';
-import ContactContainer from '../Container/Contact';
-import PostDetailsContainer from '../Container/PostDetailsContainer';
+
+const  HomePageContiner = React.lazy(()=> import('../Container/HomePage'));
+
+
+const  AboutPageContiner = React.lazy(()=> import('../Container/AboutPage'));
+const  AboutIdContainer  = React.lazy(()=> import('../Container/AboutIdContainer'));
+const  ContactContainer =  React.lazy(()=> import('../Container/Contact'));
+const PostDetailsContainer =  React.lazy(()=> import('../Container/PostDetailsContainer'));
 
 const RouterConfig = ()=>{
+    
     return (
         <>
-        
-        <BrowserRouter>
-            <HeaderCOmponents />
-                <Routes>
-                    <Route element={<HomePageContiner />} path="/" />
-                    <Route element={<AboutPageContiner />} path="/about" />
-                    <Route element={<AboutIdContainer />} path="/about/:id" />
-                    <Route element={<ContactContainer />} path="/contact" />
-                    <Route element={<PostDetailsContainer />} path="/post/:id" />
-                </Routes>
-            <FooterCOmponents />
-        </BrowserRouter>
+        <Suspense fallback={<div>Loading...</div>}>
+            <BrowserRouter>
+                <HeaderCOmponents />
+                    <Routes>
+                        <Route element={<HomePageContiner />} path="/" />
+                        <Route element={<AboutPageContiner />} path="/about" />
+                        <Route element={<AboutIdContainer />} path="/about/:id" />
+                        <Route element={<ContactContainer />} path="/contact" />
+                        <Route element={<PostDetailsContainer />} path="/post/:id" />
+                    </Routes>
+                <FooterCOmponents />
+            </BrowserRouter>
+        </Suspense>
         
         </>
     )

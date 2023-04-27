@@ -1,15 +1,24 @@
+import React from 'react';
 
-const Heading_1 = (props)=>{
-    let title =props.data;
+import {UserState} from '../ContextAPI/context';
+
+
+const Heading_1 = ()=>{
+    const data = UserState();
+    const inputValue = data.state.data
     const changeTextHanlder = (e)=>{
         const value = e.target.value;
         console.log(value);
-        props.onchangefunction(value)
+        data.dispatch({
+            type:'CHANGE_DATA',
+            payload:value
+        })
     }
+
     return (
         <>
-            <h1>{title}</h1>
-            <input type="text" onChange={changeTextHanlder} defaultValue="" placeholder="Enter your name" />
+            <h1>{inputValue}</h1>
+            <input type="text" onChange={changeTextHanlder} value={inputValue} placeholder="Enter your name" />
         </>
     )
 }
